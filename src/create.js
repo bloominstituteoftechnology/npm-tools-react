@@ -17,7 +17,10 @@ const getTime = (date = new Date()) => {
 const logAndKill = message => {
   console.error(message)
   console.error(`Docs:
-    npx @bloomtools/react banana # creates a React project inside a "banana" folder`)
+    npx @bloomtools/react todos # replace "todos" with desired project name
+    npx @bloomtools/react@0.0.3 todos # to use a specific version of this tool
+    npx @bloomtools/react # a default project name "react-project" is used
+  `)
   process.exit(1)
 }
 

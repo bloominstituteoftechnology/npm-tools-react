@@ -10,9 +10,11 @@ This tool quickly scaffolds a React project.
 ## ✨ Usage
 
 ```bash
-npx @bloomtools/react todos # replace todos with desired name
+npx @bloomtools/react todos # replace "todos" with desired project name
 
 npx @bloomtools/react@0.0.3 todos # to use a specific version of this tool
+
+npx @bloomtools/react # a default project name "react-project" is used
 ```
 
 ### What it Does
@@ -28,7 +30,7 @@ npx @bloomtools/react@0.0.3 todos # to use a specific version of this tool
 ## ✨ Post-Usage
 
 ```bash
-cd todos # or whatever folder name you chose
+cd todos # or whatever project name you chose
 npm install
 npm run dev
 ```
