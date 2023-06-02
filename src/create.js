@@ -44,10 +44,20 @@ module.exports = function () {
         cd destinationFolderPath
         git init
         git add -A
-        git commit -m initial
+        git commit -m "initial commit"
       `)
       console.log(`✨ Initialized Git repo!`)
     }
+    console.log(`✨ START CODING:
+      1- cd into your ${projName} folder
+      2- execute "npm install"
+      3- execute "npm run dev"
+      4- see your app loading in "http://localhost:3003"
+    `)
   }
-  start()
+  try {
+    start()
+  } catch (e) {
+    logAndKill(`An error happened: ${e.message}`)
+  }
 }

@@ -12,7 +12,7 @@ const BABEL_LOADER = 'babel-loader'
 const STRING_REPLACE_LOADER = 'string-replace-loader'
 
 const SERVER_URL = /http:\/\/localhost:9000/g
-const FRONTEND_PORT = 3000
+const FRONTEND_PORT = 3003
 
 const INDEX_HTML_PATH = './frontend/index.html'
 const INDEX_JS_PATH = './frontend/index.js'
