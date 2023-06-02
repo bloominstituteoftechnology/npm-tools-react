@@ -1,4 +1,4 @@
-const { exec, spawnSync } = require('child_process')
+const { execSync } = require('child_process')
 const fs = require('fs')
 const path = require('path')
 
@@ -14,23 +14,9 @@ const getTime = (date = new Date()) => {
   })
 }
 
-const log = (proc, name) => {
-  proc.stdout.on('data', data => {
-    console.log(`🍅 ${data}`)
-  })
-  proc.stderr.on('data', data => {
-    console.error(`🍅 ${data}`)
-  })
-  proc.on('exit', code => {
-    const emoji = code > 0 ? '❓' : '✨'
-    const outcome = code > 0 ? 'failed' : 'succeeded'
-    console.log(`${emoji} ${name} process ${outcome} at ${getTime()}\n`)
-  })
-}
-
 const logAndKill = message => {
   console.error(message)
-  console.error(`Docs:\n
+  console.error(`Docs:
     npx @bloomtools/react banana # creates a React project inside a "banana" folder`)
   process.exit(1)
 }
@@ -46,27 +32,21 @@ module.exports = function () {
   const destinationFolderPath = path.join(process.cwd(), projName)
 
   const start = () => {
-    const projectProcess = exec(`
+    execSync(`
       cp -R ${sourceFolderPath} ${destinationFolderPath}
     `)
-    log(projectProcess, 'React App')
+    console.log(`✨ Project ${projName} created at ${getTime()}!`)
 
-    function testForGit() {
-      let test
-      try {
-        test = exec('git rev-parse --is-inside-work-tree', { encoding: 'utf8' })
-      } catch { }
-      return !!test
-    }
-
-    if (!testForGit()) {
-      const gitProcess = exec(`
-      cd destinationFolderPath
-      git init
-      git add -A
-      git commit -m initial
-    `)
-      log(gitProcess, 'Git Repo')
+    try {
+      execSync('git rev-parse --is-inside-work-tree', { encoding: 'utf8' })
+    } catch {
+      execSync(`
+        cd destinationFolderPath
+        git init
+        git add -A
+        git commit -m initial
+      `)
+      console.log(`✨ Initialized Git repo!`)
     }
   }
   start()
