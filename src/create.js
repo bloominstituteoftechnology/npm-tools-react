@@ -41,7 +41,7 @@ module.exports = function () {
     console.log(`✨ Project ${projName} created on ${getTime()}`)
 
     try {
-      execSync('git rev-parse --is-inside-work-tree', { encoding: 'utf8' })
+      execSync('git rev-parse --is-inside-work-tree 2>/dev/null', { encoding: 'utf8' })
     } catch {
       execSync(`
         cd ${destinationFolderPath}
