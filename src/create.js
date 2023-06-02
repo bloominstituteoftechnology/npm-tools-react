@@ -30,13 +30,13 @@ const log = (proc, name) => {
 
 const logAndKill = message => {
   console.error(message)
-  console.error(`Usage:\n
+  console.error(`Docs:\n
     npx @bloomtools/react banana # creates a React project inside a "banana" folder`)
   process.exit(1)
 }
 
 module.exports = function () {
-  const [, , projName = 'react-app'] = process.argv
+  const [, , projName = 'react-project'] = process.argv
 
   if (fs.existsSync(projName)) {
     logAndKill('Directory `' + projName + '` already exists')
@@ -48,6 +48,7 @@ module.exports = function () {
   const prep = () => {
     const prepProcess = exec(`
       cp -R ${sourceFolderPath} ${destinationFolderPath}
+      cd destinationFolderPath
       git init
       git add -A
       git commit -m initial
