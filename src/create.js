@@ -41,7 +41,7 @@ module.exports = function () {
       execSync('git rev-parse --is-inside-work-tree', { encoding: 'utf8' })
     } catch {
       execSync(`
-        cd destinationFolderPath
+        cd ${destinationFolderPath}
         git init
         git add -A
         git commit -m "initial commit"
