@@ -45,7 +45,7 @@ module.exports = function () {
   const sourceFolderPath = path.join(__dirname, '../react-project')
   const destinationFolderPath = path.join(process.cwd(), projName)
 
-  const prep = () => {
+  const doit = () => {
     const prepProcess = exec(`
       cp -R ${sourceFolderPath} ${destinationFolderPath}
       cd destinationFolderPath
@@ -53,7 +53,7 @@ module.exports = function () {
       git add -A
       git commit -m initial
     `)
-    log(prepProcess, 'Prep')
+    log(prepProcess, 'React App')
   }
-  prep()
+  doit()
 }
