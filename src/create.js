@@ -38,7 +38,7 @@ module.exports = function () {
     execSync(`
       cp -R ${sourceFolderPath} ${destinationFolderPath}
     `)
-    console.log(`✨ Project ${projName} created at ${getTime()}`)
+    console.log(`✨ Project ${projName} created on ${getTime()}`)
 
     try {
       execSync('git rev-parse --is-inside-work-tree', { encoding: 'utf8' })
@@ -49,7 +49,7 @@ module.exports = function () {
         git add -A
         git commit -m "initial commit"
       `)
-      console.log(`✨ Initialized Git repo!`)
+      console.log(`✨ Initialized a Git repo, since this folder isn't one`)
     }
     console.log(`✨ START CODING:
       1- cd into the ${projName} folder
