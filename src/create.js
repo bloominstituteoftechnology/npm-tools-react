@@ -49,7 +49,7 @@ module.exports = function () {
         git add -A
         git commit -m "initial commit"
       `)
-      console.log(`✨ Initialized a Git repo, since this folder isn't one`)
+      console.log(`✨ Git repo initialized inside ${projName}`)
     }
     console.log(`✨ START CODING:
       1- cd into the ${projName} folder
