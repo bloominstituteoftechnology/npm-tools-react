@@ -35,7 +35,7 @@ module.exports = function () {
     execSync(`
       cp -R ${sourceFolderPath} ${destinationFolderPath}
     `)
-    console.log(`✨ Project ${projName} created at ${getTime()}!`)
+    console.log(`✨ Project ${projName} created at ${getTime()}`)
 
     try {
       execSync('git rev-parse --is-inside-work-tree', { encoding: 'utf8' })
@@ -49,10 +49,10 @@ module.exports = function () {
       console.log(`✨ Initialized Git repo!`)
     }
     console.log(`✨ START CODING:
-      1- cd into your ${projName} folder
+      1- cd into the ${projName} folder
       2- execute "npm install"
       3- execute "npm run dev"
-      4- see your app loading in "http://localhost:3003"
+      4- see the app loading in "http://localhost:3003"
     `)
   }
   try {
