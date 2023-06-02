@@ -31,7 +31,7 @@ const log = (proc, name) => {
 const logAndKill = message => {
   console.error(message)
   console.error(`Usage:\n
-    npx @ladrillo/ketchup@latest # pushes to a "lecture" branch`)
+    npx @bloomtools/react banana # creates a React project inside a "banana" folder`)
   process.exit(1)
 }
 
@@ -39,8 +39,7 @@ module.exports = function () {
   const [, , projName = 'react-app'] = process.argv
 
   if (fs.existsSync(projName)) {
-    console.log('Directory `' + projName + '` already exists. Aborting.')
-    process.exit(1)
+    logAndKill('Directory `' + projName + '` already exists')
   }
 
   const sourceFolderPath = path.join(__dirname, '../react-project')
@@ -56,18 +55,4 @@ module.exports = function () {
     log(prepProcess, 'Prep')
   }
   prep()
-
-  // const push = (event, path) => {
-  //   console.log(`🔥 ${event} in ${path}\n`)
-  //   const pushProcess = exec(`
-  //     git add .
-  //     git commit -m 'committing to "${branch}"'
-  //     git push origin '${branch}'
-  //   `)
-  //   log(pushProcess, 'Commit & push')
-  // }
-
-  // if (!resume) prep()
-  // const throttledPush = throttle(push, 20000, throttleConfig)
-  // chokidar.watch('.', chokidarConfig).on('all', throttledPush)
 }
