@@ -11,6 +11,7 @@ This tool quickly scaffolds a React project.
 
 ```bash
 npx @bloomtools/react todos # replace todos with desired name
+
 npx @bloomtools/react@0.0.3 todos # to use a specific version of this tool
 ```
 
