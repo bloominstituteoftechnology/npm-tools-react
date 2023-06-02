@@ -45,15 +45,29 @@ module.exports = function () {
   const sourceFolderPath = path.join(__dirname, '../react-project')
   const destinationFolderPath = path.join(process.cwd(), projName)
 
-  const doit = () => {
-    const prepProcess = exec(`
+  const start = () => {
+    const projectProcess = exec(`
       cp -R ${sourceFolderPath} ${destinationFolderPath}
+    `)
+    log(projectProcess, 'React App')
+
+    function testForGit() {
+      let test
+      try {
+        test = exec('git rev-parse --is-inside-work-tree', { encoding: 'utf8' })
+      } catch { }
+      return !!test
+    }
+
+    if (!testForGit()) {
+      const gitProcess = exec(`
       cd destinationFolderPath
       git init
       git add -A
       git commit -m initial
     `)
-    log(prepProcess, 'React App')
+      log(gitProcess, 'Git Repo')
+    }
   }
-  doit()
+  start()
 }
