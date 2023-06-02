@@ -36,7 +36,7 @@ const logAndKill = message => {
 }
 
 module.exports = function () {
-  const [, , projName = 'gaga'] = process.argv
+  const [, , projName = 'react-app'] = process.argv
 
   if (fs.existsSync(projName)) {
     console.log('Directory `' + projName + '` already exists. Aborting.')
