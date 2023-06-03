@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import squeak from '../audio/squeak.mp3'
+import duck from '../images/duck.jpg'
 
 const StyledTodo = styled.li`
   text-decoration: ${pr => pr.complete ? 'line-through' : 'initial'};
@@ -19,17 +21,27 @@ export default function App() {
 
   useEffect(() => { getAll() }, [])
 
+  const audioRef = useRef(null)
+
+  const playSound = () => {
+    audioRef.current.play()
+  }
+
   return (
     <div>
       <ul>
         {
           todos.map(todo => (
-            <StyledTodo  onClick={() => toggle(todo.id)} complete={todo.complete} key={todo.id}>
+            <StyledTodo onClick={() => toggle(todo.id)} complete={todo.complete} key={todo.id}>
               <span>{todo.name}{todo.complete && ' DONE'}</span>
             </StyledTodo>
           ))
         }
       </ul>
+      <img style={{ cursor: 'pointer' }} src={duck} onClick={playSound} />
+      <audio ref={audioRef}>
+        <source src={squeak} type="audio/mpeg" />
+      </audio>
     </div>
   )
 }

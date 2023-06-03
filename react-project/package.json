@@ -26,6 +26,7 @@
     "css-loader": "6.8.1",
     "eslint": "8.42.0",
     "eslint-plugin-react": "7.32.2",
+    "file-loader": "6.2.0",
     "fkill-cli": "7.1.0",
     "html-loader": "4.2.0",
     "html-webpack-plugin": "5.5.1",
@@ -46,7 +47,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.11.2",
-    "styled-components": "5.3.11"
+    "styled-components": "5.3.11",
+    "yup": "1.2.0"
   },
   "engines": {
     "node": ">=16.x",
