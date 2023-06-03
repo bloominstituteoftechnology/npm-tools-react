@@ -35,7 +35,10 @@ module.exports = function () {
   const destinationFolderPath = path.join(process.cwd(), projName)
 
   const start = () => {
-    execSync(`cp -R ${sourceFolderPath} ${destinationFolderPath}`)
+    execSync(`
+      mkdir ${destinationFolderPath}
+      cp -R ${sourceFolderPath} ${destinationFolderPath}
+    `)
     console.log(`✨ Project ${projName} created on ${getTime()}`)
     try {
       execSync('git rev-parse --is-inside-work-tree 2>/dev/null', { encoding: 'utf8' })
