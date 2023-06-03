@@ -1,6 +1,7 @@
 const { execSync } = require('child_process')
 const fs = require('fs')
 const path = require('path')
+const upath = require('upath')
 
 const getTime = (date = new Date()) => {
   return date.toLocaleString('en-US', {
@@ -31,8 +32,8 @@ module.exports = function () {
     logAndKill('Directory `' + projName + '` already exists')
   }
 
-  const sourceFolderPath = path.join(__dirname, '../react-project')
-  const destinationFolderPath = path.join(process.cwd(), projName)
+  const sourceFolderPath = path.join(upath.normalize(__dirname), '../react-project')
+  const destinationFolderPath = path.join(upath.normalize(process.cwd()), projName)
 
   const start = () => {
     execSync(`
