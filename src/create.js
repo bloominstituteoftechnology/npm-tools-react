@@ -32,14 +32,11 @@ module.exports = function () {
     logAndKill('Directory `' + projName + '` already exists')
   }
 
-  const sourceFolderPath = path.join(upath.normalize(__dirname), '../react-project')
-  const destinationFolderPath = path.join(upath.normalize(process.cwd()), projName)
+  const sourceFolderPath = upath.normalize(path.join(__dirname, '../react-project'))
+  const destinationFolderPath = upath.normalize(path.join(process.cwd(), projName))
 
   const start = () => {
-    execSync(`
-      mkdir ${destinationFolderPath}
-      cp -R ${sourceFolderPath} ${destinationFolderPath}
-    `)
+    execSync(`cp -R ${sourceFolderPath} ${destinationFolderPath}`)
     console.log(`✨ Project ${projName} created on ${getTime()}`)
     try {
       execSync('git rev-parse --is-inside-work-tree 2>/dev/null', { encoding: 'utf8' })
@@ -60,7 +57,7 @@ module.exports = function () {
     `)
   }
   try {
-    console.log(`✨ Creating project ${projName} at ${destinationFolderPath}`)
+    console.log(`✨ Creating project ${projName} at ${destinationFolderPath} ...`)
     start()
   } catch (e) {
     logAndKill(`An error happened: ${e.message}`)
