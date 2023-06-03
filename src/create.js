@@ -1,6 +1,5 @@
 const { execSync } = require('child_process')
 const fs = require('fs')
-const path = require('path')
 const upath = require('upath')
 
 const getTime = (date = new Date()) => {
@@ -32,8 +31,8 @@ module.exports = function () {
     logAndKill(`💀 Directory ${projName} already exists. Aborting`)
   }
 
-  const sourceFolderPath = upath.normalize(path.join(__dirname, '../react-project'))
-  const destinationFolderPath = upath.normalize(path.join(process.cwd(), projName))
+  const sourceFolderPath = upath.normalize(upath.join(__dirname, '../react-project'))
+  const destinationFolderPath = upath.normalize(upath.join(process.cwd(), projName))
 
   const start = () => {
     console.log(`✨ Creating project ${projName} at ${destinationFolderPath} ...`)
