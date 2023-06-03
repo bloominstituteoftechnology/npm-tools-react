@@ -28,8 +28,6 @@ const logAndKill = message => {
 module.exports = function () {
   const [, , projName = 'react-project'] = process.argv
 
-  console.log(`✨ Creating project ${projName} at ${destinationFolderPath} ...`)
-
   if (fs.existsSync(projName)) {
     logAndKill(`💀 Directory ${projName} already exists. Aborting`)
   }
@@ -38,6 +36,8 @@ module.exports = function () {
   const destinationFolderPath = upath.normalize(path.join(process.cwd(), projName))
 
   const start = () => {
+    console.log(`✨ Creating project ${projName} at ${destinationFolderPath} ...`)
+
     execSync(`cp -R ${sourceFolderPath} ${destinationFolderPath}`)
 
     console.log(`✨ Project ${projName} created on ${getTime()}`)
