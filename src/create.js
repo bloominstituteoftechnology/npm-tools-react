@@ -35,11 +35,8 @@ module.exports = function () {
   const destinationFolderPath = path.join(process.cwd(), projName)
 
   const start = () => {
-    execSync(`
-      cp -R ${sourceFolderPath} ${destinationFolderPath}
-    `)
+    execSync(`cp -R ${sourceFolderPath} ${destinationFolderPath}`)
     console.log(`✨ Project ${projName} created on ${getTime()}`)
-
     try {
       execSync('git rev-parse --is-inside-work-tree 2>/dev/null', { encoding: 'utf8' })
     } catch {
@@ -55,10 +52,11 @@ module.exports = function () {
       1- cd into the ${projName} folder
       2- execute "npm install"
       3- execute "npm run dev"
-      4- see the app loading in "http://localhost:3003"
+      4- see the app loading at "http://localhost:3003"
     `)
   }
   try {
+    console.log(`✨ Creating project ${projName} at ${destinationFolderPath}`)
     start()
   } catch (e) {
     logAndKill(`An error happened: ${e.message}`)
