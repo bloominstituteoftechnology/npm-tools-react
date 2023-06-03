@@ -7,7 +7,8 @@
     "webpack": "cross-env NODE_ENV=production webpack",
     "frontend": "webpack serve --open",
     "backend": "node backend/server.js",
-    "start": "npm run backend"
+    "start": "npm run backend",
+    "fix:violently": "rm -rf node_modules package-lock.json && npm cache clean --force && npm i"
   },
   "devDependencies": {
     "@babel/core": "7.22.1",

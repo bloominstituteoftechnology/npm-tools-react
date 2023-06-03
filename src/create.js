@@ -28,8 +28,10 @@ const logAndKill = message => {
 module.exports = function () {
   const [, , projName = 'react-project'] = process.argv
 
+  console.log(`✨ Creating project ${projName} at ${destinationFolderPath} ...`)
+
   if (fs.existsSync(projName)) {
-    logAndKill('Directory `' + projName + '` already exists')
+    logAndKill(`💀 Directory ${projName} already exists. Aborting`)
   }
 
   const sourceFolderPath = upath.normalize(path.join(__dirname, '../react-project'))
@@ -37,29 +39,21 @@ module.exports = function () {
 
   const start = () => {
     execSync(`cp -R ${sourceFolderPath} ${destinationFolderPath}`)
+
     console.log(`✨ Project ${projName} created on ${getTime()}`)
-    try {
-      execSync('git rev-parse --is-inside-work-tree 2>/dev/null', { encoding: 'utf8' })
-    } catch {
-      execSync(`
-        cd ${destinationFolderPath}
-        git init
-        git add -A
-        git commit -m "initial commit"
-      `)
-      console.log(`✨ Git repo initialized inside ${projName}`)
-    }
     console.log(`✨ START CODING:
       1- cd into the ${projName} folder
       2- execute "npm install"
       3- execute "npm run dev"
       4- see the app loading at "http://localhost:3003"
+
+      ❗ Check ${projName}/package.json for other scripts
+      ❗ It's advisable to "git init" new projects
     `)
   }
   try {
-    console.log(`✨ Creating project ${projName} at ${destinationFolderPath} ...`)
     start()
   } catch (e) {
-    logAndKill(`An error happened: ${e.message}`)
+    logAndKill(`💀 An error happened: ${e.message}`)
   }
 }
