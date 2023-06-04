@@ -1,6 +1,7 @@
 const { execSync } = require('child_process')
 const fs = require('fs')
 const upath = require('upath')
+const { version } = require('./package.json')
 
 const getTime = (date = new Date()) => {
   return date.toLocaleString('en-US', {
@@ -18,7 +19,7 @@ const logAndKill = message => {
   console.error(message)
   console.error(`Docs:
     npx @bloomtools/react todos # replace "todos" with desired project name
-    npx @bloomtools/react@0.0.3 todos # to use a specific version of this tool
+    npx @bloomtools/react@0.0.3 todos # to use a specific version of the tool
     npx @bloomtools/react # a default project name "react-project" is used
   `)
   process.exit(1)
@@ -39,15 +40,21 @@ module.exports = function () {
 
     execSync(`cp -R ${sourceFolderPath} ${destinationFolderPath}`)
 
+    const readme = upath.normalize(upath.join(destinationFolderPath, 'README.md'))
+
+    fs.appendFileSync(readme, `**Project generated with @bloomtools/react@${version}**\n`, 'utf-8')
+
     console.log(`✨ Project ${projName} created on ${getTime()}`)
     console.log(`✨ START CODING:
       1- cd into the ${projName} folder
       2- execute "npm install"
       3- execute "npm run dev"
       4- see the app loading at "http://localhost:3003"
+      5- open ${projName} project in VSCode
 
       ❗ Check ${projName}/package.json for other scripts
-      ❗ It's advisable to "git init" new projects
+
+      ❤️ Happy Hacking!
     `)
   }
   try {
