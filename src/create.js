@@ -1,7 +1,7 @@
 const { execSync } = require('child_process')
 const fs = require('fs')
 const upath = require('upath')
-const { version } = require('./package.json')
+const { version } = require('../package.json')
 
 const getTime = (date = new Date()) => {
   return date.toLocaleString('en-US', {
@@ -41,8 +41,7 @@ module.exports = function () {
     execSync(`cp -R ${sourceFolderPath} ${destinationFolderPath}`)
 
     const readme = upath.normalize(upath.join(destinationFolderPath, 'README.md'))
-
-    fs.appendFileSync(readme, `**Project generated with @bloomtools/react@${version}**\n`, 'utf-8')
+    fs.appendFileSync(readme, `\n\n**Project generated with @bloomtools/react@${version}**\n`, 'utf-8')
 
     console.log(`✨ Project ${projName} created on ${getTime()}`)
     console.log(`✨ START CODING:
