@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import server from '../../backend/mock-server'
-import { resetTodos } from '../../backend/helpers'
-import App from './App'
+import server from '../../../backend/mock-server'
+import { resetTodos } from '../../../backend/helpers'
+import Todo from '../Todo'
 
 jest.setTimeout(750)
 const waitForOptions = { timeout: 100 }
@@ -19,7 +19,7 @@ beforeAll(() => { server.listen() })
 afterAll(() => { server.close() })
 beforeEach(() => {
   resetTodos()
-  renderApp(<App />)
+  renderApp(<Todo />)
 })
 afterEach(() => {
   server.resetHandlers()
@@ -33,5 +33,5 @@ test('todos are present', async () => {
 
 test('can do laundry', async () => {
   fireEvent.click(await screen.findByText(/laundry/, queryOptions, waitForOptions))
-  expect(await screen.findByText('laundry DONE', queryOptions, waitForOptions)).toBeInTheDocument()
+  expect(await screen.findByText('laundry ✔️', queryOptions, waitForOptions)).toBeInTheDocument()
 })
