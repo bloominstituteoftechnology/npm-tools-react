@@ -43,7 +43,7 @@ module.exports = function () {
     const time = getTime()
     const readme = upath.normalize(upath.join(destinationFolderPath, 'README.md'))
 
-    fs.appendFileSync(readme, `\n\n**Project created with @bloomtools/react@${version} on ${time}**\n`, 'utf-8')
+    fs.appendFileSync(readme, `\n**Project created with [@bloomtools/react@${version}](https://github.com/bloominstituteoftechnology/npm-tools-react) on ${time}**\n`, 'utf-8')
 
     console.log(`✨ Project ${projName} created on ${time}`)
     console.log(`✨ START CODING:

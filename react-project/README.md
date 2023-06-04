@@ -1,6 +1,6 @@
 # React Project
 
-Project generated with [@bloomtools/react](https://github.com/bloominstituteoftechnology/npm-tools-react).
+This is a full-stack React starter app, meant for practicing and prototyping.
 
 ## ✨ Requirements
 

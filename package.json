@@ -1,6 +1,6 @@
 {
   "name": "@bloomtools/react",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "type": "commonjs",
   "scripts": {
     "dev": "node --inspect index.js $1"
