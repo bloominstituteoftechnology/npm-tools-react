@@ -40,10 +40,12 @@ module.exports = function () {
 
     execSync(`cp -R ${sourceFolderPath} ${destinationFolderPath}`)
 
+    const time = getTime()
     const readme = upath.normalize(upath.join(destinationFolderPath, 'README.md'))
-    fs.appendFileSync(readme, `\n\n**Project generated with @bloomtools/react@${version}**\n`, 'utf-8')
 
-    console.log(`✨ Project ${projName} created on ${getTime()}`)
+    fs.appendFileSync(readme, `\n\n**Project created with @bloomtools/react@${version} on ${time}**\n`, 'utf-8')
+
+    console.log(`✨ Project ${projName} created on ${time}`)
     console.log(`✨ START CODING:
       1- cd into the ${projName} folder
       2- execute "npm install"
