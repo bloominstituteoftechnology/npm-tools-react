@@ -10,11 +10,11 @@ const StyledTodo = styled.li`
 export default function Todo() {
   const [todos, setTodos] = useState([])
 
-  const getAll = () => fetch('http://localhost:9000/api/todos')
+  const getAll = () => fetch('http://localhost:9009/api/todos')
     .then(res => res.json())
     .then(data => setTodos(data))
 
-  const toggle = id => axios.patch(`http://localhost:9000/api/todos/${id}`)
+  const toggle = id => axios.patch(`http://localhost:9009/api/todos/${id}`)
     .then(res => setTodos(res.data))
 
   useEffect(() => { getAll() }, [])

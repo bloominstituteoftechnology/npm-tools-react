@@ -33,11 +33,11 @@ function remove(req, res, ctx) {
 }
 
 const handlers = [
-  rest.get('http://localhost:9000/api/todos', getAll),
-  rest.get('http://localhost:9000/api/todos/:id', getById),
-  rest.post('http://localhost:9000/api/todos', create),
-  rest.patch('http://localhost:9000/api/todos/:id', toggleDone),
-  rest.delete('http://localhost:9000/api/todos/:id', remove),
+  rest.get('http://localhost:9009/api/todos', getAll),
+  rest.get('http://localhost:9009/api/todos/:id', getById),
+  rest.post('http://localhost:9009/api/todos', create),
+  rest.patch('http://localhost:9009/api/todos/:id', toggleDone),
+  rest.delete('http://localhost:9009/api/todos/:id', remove),
 ]
 
 module.exports = setupServer(...handlers)

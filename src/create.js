@@ -36,7 +36,7 @@ module.exports = function () {
   const destinationFolderPath = upath.normalize(upath.join(process.cwd(), projName))
 
   const start = () => {
-    console.log(`✨ Creating project ${projName} at ${destinationFolderPath} ...`)
+    console.log(`\n✨ Creating project at ${destinationFolderPath} ...`)
 
     execSync(`cp -R ${sourceFolderPath} ${destinationFolderPath}`)
 
@@ -46,17 +46,18 @@ module.exports = function () {
     fs.appendFileSync(readme, `\n**Project created with [@bloomtools/react@${version}](https://github.com/bloominstituteoftechnology/npm-tools-react) on ${time}**\n`, 'utf-8')
 
     console.log(`✨ Project ${projName} created on ${time}`)
-    console.log(`✨ START CODING:
-      1- cd into the ${projName} folder
-      2- execute "npm install"
-      3- execute "npm run dev"
-      4- see the app loading at "http://localhost:3003"
-      5- open ${projName} project in VSCode
+    console.log(`✨ Using @bloomtools/react@${version} and Node ${process.version}\n`)
+    console.log(`👉 NEXT STEPS:
+    1- cd into the ${projName} directory
+    2- execute npm install
+    3- execute npm run dev
+    4- see the app loading at http://localhost:3003
+    5- open ${projName} project in VSCode
 
-      ❗ Check ${projName}/package.json for other scripts
+    ❗ Check ${projName}/package.json for other scripts
+    ❗ Problems? Seek support from Bloom staff!
 
-      ❤️ Happy Hacking!
-    `)
+    ❤️ Happy Hacking!\n`)
   }
   try {
     start()

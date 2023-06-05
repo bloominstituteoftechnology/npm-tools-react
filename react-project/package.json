@@ -2,7 +2,7 @@
   "name": "react-project",
   "version": "0.0.1",
   "scripts": {
-    "dev": "fkill :9000 :3003 -f -s && concurrently \"npm:backend\" \"npm:frontend\"",
+    "dev": "fkill :9009 :3003 -f -s && concurrently \"npm:backend\" \"npm:frontend\"",
     "test": "cross-env NODE_ENV=testing jest --watchAll",
     "build": "cross-env NODE_ENV=production webpack",
     "frontend": "webpack serve --open",
