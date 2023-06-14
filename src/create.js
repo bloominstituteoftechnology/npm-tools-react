@@ -39,6 +39,7 @@ module.exports = function () {
     console.log(`\n✨ Creating project at ${destinationFolderPath} ...`)
 
     execSync(`cp -R ${sourceFolderPath} ${destinationFolderPath}`)
+    execSync(`mv ${destinationFolderPath}/.gitignorez ${destinationFolderPath}/.gitignore`)
 
     const time = getTime()
     const readme = upath.normalize(upath.join(destinationFolderPath, 'README.md'))
