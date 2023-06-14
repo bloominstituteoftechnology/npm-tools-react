@@ -51,7 +51,7 @@ module.exports = function () {
     1- cd into the ${projName} directory
     2- execute npm install
     3- execute npm run dev
-    4- see the app loading at http://localhost:3003
+    4- load app in http://localhost:3003
     5- open ${projName} project in VSCode
 
     ❗ Check ${projName}/package.json for other scripts
