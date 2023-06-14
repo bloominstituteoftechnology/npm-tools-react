@@ -59,7 +59,6 @@ const config = {
       },
       {
         test: /\.css$/i,
-        exclude: /node_modules/,
         use: [
           STYLE_LOADER,
           CSS_LOADER,

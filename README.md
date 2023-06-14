@@ -12,7 +12,7 @@ This tool quickly scaffolds a React project.
 ```bash
 npx @bloomtools/react todos # replace "todos" with desired project name
 
-npx @bloomtools/react@0.0.3 todos # to use a specific version of the tool
+npx @bloomtools/react@0.0.3 todos # replace "O.O.3" with desired version
 
 npx @bloomtools/react # a default project name "react-project" is used
 ```
