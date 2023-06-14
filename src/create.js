@@ -29,7 +29,7 @@ module.exports = function () {
   const [, , projName = 'react-project'] = process.argv
 
   if (fs.existsSync(projName)) {
-    logAndKill(`\n💀 Directory ${projName} already exists. Aborting\n`)
+    logAndKill(`\n💀 Directory ${projName} already exists. Aborting!\n`)
   }
 
   const sourceFolderPath = upath.normalize(upath.join(__dirname, '../react-project'))
