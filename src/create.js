@@ -28,7 +28,18 @@ const logAndKill = message => {
 module.exports = function () {
   const [, , projName = 'react-project'] = process.argv
 
-  if (fs.existsSync(projName)) {
+  console.log('--->', upath.resolve('.'))
+
+  let isCurrentDir
+  if (projName && upath.resolve(projName) === upath.resolve('.')) {
+    console.log('User specified the current directory.')
+    isCurrentDir = true
+  } else {
+    console.log('User specified a different directory.')
+    isCurrentDir = false
+  }
+
+  if (!isCurrentDir && fs.existsSync(projName)) {
     logAndKill(`\n💀 Directory ${projName} already exists. Aborting!\n`)
   }
 
