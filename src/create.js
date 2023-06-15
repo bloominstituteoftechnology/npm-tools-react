@@ -44,7 +44,12 @@ module.exports = function () {
   }
 
   const sourceFolderPath = upath.normalize(upath.join(__dirname, '../react-project'))
-  const destinationFolderPath = upath.normalize(upath.join(process.cwd(), projName))
+  let destinationFolderPath
+  if (isCurrentDir) {
+    destinationFolderPath = upath.normalize(upath.join(process.cwd(), projName))
+  } else {
+    destinationFolderPath = upath.resolve('.')
+  }
 
   const start = () => {
     console.log(`\n✨ Creating project at ${destinationFolderPath} ...`)
