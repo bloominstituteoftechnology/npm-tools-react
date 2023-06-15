@@ -28,28 +28,12 @@ const logAndKill = message => {
 module.exports = function () {
   const [, , projName = 'react-project'] = process.argv
 
-  console.log('--->', upath.resolve('.'))
-
-  let isCurrentDir
-  if (projName && upath.resolve(projName) === upath.resolve('.')) {
-    console.log('User specified the current directory.')
-    isCurrentDir = true
-  } else {
-    console.log('User specified a different directory.')
-    isCurrentDir = false
-  }
-
-  if (!isCurrentDir && fs.existsSync(projName)) {
+  if (fs.existsSync(projName)) {
     logAndKill(`\n💀 Directory ${projName} already exists. Aborting!\n`)
   }
 
   const sourceFolderPath = upath.normalize(upath.join(__dirname, '../react-project'))
-  let destinationFolderPath
-  if (isCurrentDir) {
-    destinationFolderPath = upath.normalize(upath.join(process.cwd(), projName))
-  } else {
-    destinationFolderPath = upath.resolve('.')
-  }
+  const destinationFolderPath = upath.normalize(upath.join(process.cwd(), projName))
 
   const start = () => {
     console.log(`\n✨ Creating project at ${destinationFolderPath} ...`)
