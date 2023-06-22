@@ -24,7 +24,7 @@
     "concurrently": "^8.2.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
-    "eslint": "^8.42.0",
+    "eslint": "^8.43.0",
     "eslint-plugin-react": "^7.32.2",
     "file-loader": "^6.2.0",
     "fkill-cli": "^7.1.0",
@@ -36,7 +36,7 @@
     "nodemon": "^2.0.22",
     "string-replace-loader": "^3.1.0",
     "style-loader": "^3.3.3",
-    "webpack": "^5.87.0",
+    "webpack": "^5.88.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },

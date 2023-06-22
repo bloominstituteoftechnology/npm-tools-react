@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const path = require('path')
 const Todo = require('./helpers')
+const picsRouter = require('./routers/pics')
 
 const PORT = process.env.PORT || 9009
 
@@ -12,6 +13,8 @@ server.use(express.json())
 server.use(express.static(path.join(__dirname, '../dist')))
 
 server.use(cors())
+
+server.use('/api/pics', picsRouter) // TODO: this router is not mocked in MSW
 
 server.get('/api/todos', (req, res) => {
   res.json(Todo.getAll())
