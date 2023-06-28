@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 
 const StyledTodo = styled.li`
-  text-decoration: ${pr => pr.complete ? 'line-through' : 'initial'};
+  text-decoration: ${pr => pr.$complete ? 'line-through' : 'initial'};
   cursor: pointer;
 `
 
@@ -25,7 +25,7 @@ export default function Todo() {
       <ul>
         {
           todos.map(todo => (
-            <StyledTodo onClick={() => toggle(todo.id)} complete={todo.complete} key={todo.id}>
+            <StyledTodo onClick={() => toggle(todo.id)} $complete={todo.complete} key={todo.id}>
               <span>{todo.name}{todo.complete && ' ✔️'}</span>
             </StyledTodo>
           ))
