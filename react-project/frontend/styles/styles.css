@@ -8,7 +8,7 @@ body {
   border: 1rem solid #ff4b00;
 }
 
-#root, #wrapper {
+#root, body {
   display: flex;
   flex-direction: column;
   align-items: center;
