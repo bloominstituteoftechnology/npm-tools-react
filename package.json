@@ -1,11 +1,11 @@
 {
   "name": "@bloomtools/react",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "type": "commonjs",
   "scripts": {
     "dev": "node --inspect index.js $1"
   },
-  "author": "Bloom Institute of Technology",
+  "author": "Gabriel Cabrejas <gabriel@cabrejas.net>",
   "license": "MIT",
   "repository": {
     "type": "git",
