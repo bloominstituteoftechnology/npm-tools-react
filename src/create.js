@@ -73,7 +73,7 @@ and Node ${process.version} on ${time}**\n`, 'utf8')
 
     Check ${projName}/package.json for other scripts
 
-    ❤️ Happy Hacking! ❤️\n`)
+    ❤️ Happy Hacking!\n`)
   }
   try {
     start()

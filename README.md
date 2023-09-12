@@ -4,7 +4,7 @@ This tool quickly scaffolds a React project.
 
 ## ✨ Requirements
 
-1. Node >= 16.x
+1. Node >= 18.x
 2. Git Bash (Windows users)
 
 ## ✨ Usage
@@ -12,7 +12,7 @@ This tool quickly scaffolds a React project.
 ```bash
 npx @bloomtools/react todos # replace "todos" with desired project name
 
-npx @bloomtools/react@0.0.3 todos # replace "O.O.3" with desired version
+npx @bloomtools/react@0.0.1 todos # replace "O.O.1" with desired version
 
 npx @bloomtools/react # a default project name "react-project" is used
 ```
