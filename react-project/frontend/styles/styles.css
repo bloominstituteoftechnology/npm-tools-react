@@ -8,13 +8,15 @@ body {
   border: 1rem solid #ff4b00;
 }
 
-#root, body {
+#root,
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #93005a;
 }
 
@@ -27,9 +29,15 @@ h1, h2 {
   padding-bottom: 2rem;
 }
 
-header, footer {
+header,
+footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
+}
+
+footer>a {
+  font-size: 0.85em;
+  color: #ff4b00;
 }

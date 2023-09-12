@@ -1,6 +1,6 @@
-const { execSync } = require('child_process')
 const fs = require('fs')
 const upath = require('upath')
+const { execSync } = require('child_process')
 const { version } = require('../package.json')
 
 const getTime = (date = new Date()) => {
@@ -19,7 +19,7 @@ const logAndKill = message => {
   console.error(message)
   console.error(`👉 Docs:
     npx @bloomtools/react todos # replace "todos" with desired project name
-    npx @bloomtools/react@0.0.3 todos # replace "O.O.3" with desired version
+    npx @bloomtools/react@0.0.1 todos # replace "O.O.1" with desired version
     npx @bloomtools/react # a default project name "react-project" is used
   `)
   process.exit(1)
@@ -32,7 +32,7 @@ module.exports = function () {
     logAndKill(`\n💀 Directory ${projName} already exists. Aborting!\n`)
   }
 
-  const sourceFolderPath = upath.normalize(upath.join(__dirname, '../react-project'))
+  const sourceFolderPath = upath.normalize(upath.resolve(__dirname, '../react-project'))
   const destinationFolderPath = upath.normalize(upath.join(process.cwd(), projName))
 
   const start = () => {
@@ -44,10 +44,26 @@ module.exports = function () {
     const time = getTime()
     const readme = upath.normalize(upath.join(destinationFolderPath, 'README.md'))
 
-    fs.appendFileSync(readme, `\n**Project created with [@bloomtools/react@${version}](https://github.com/bloominstituteoftechnology/npm-tools-react) and Node ${process.version} on ${time}**\n`, 'utf-8')
+    fs.appendFileSync(readme, `\n**Project created with \
+[@bloomtools/react@${version}](https://github.com/bloominstituteoftechnology/npm-tools-react) \
+and Node ${process.version} on ${time}**\n`, 'utf8')
+
+    const regex = /Replace with @bloomtools/
+    const indexHTML = upath.normalize(upath.join(destinationFolderPath, 'frontend', 'index.html'))
+    const indexHTMLContents = fs.readFileSync(indexHTML, 'utf8')
+
+    let indexHTMLLines = indexHTMLContents.split('\n')
+    indexHTMLLines = indexHTMLLines.map(line => {
+      if (regex.test(line)) {
+        return `    version.textContent = "created with @bloomtools/react@${version}"`
+      }
+      return line
+    })
+
+    fs.writeFileSync(indexHTML, indexHTMLLines.join('\n'), 'utf8')
 
     console.log(`✨ Project ${projName} created on ${time}`)
-    console.log(`✨ Using @bloomtools/react@${version} and Node ${process.version}\n`)
+    console.log(`✨ Using @bloomtools/react@${version} and Node ${process.version}`)
     console.log(`👉 NEXT STEPS:
     1- cd into the ${projName} directory
     2- execute npm install
@@ -55,10 +71,9 @@ module.exports = function () {
     4- load app in http://localhost:3003
     5- open ${projName} project in VSCode
 
-    ❗ Check ${projName}/package.json for other scripts
-    ❗ Problems? Seek support from Bloom staff!
+    Check ${projName}/package.json for other scripts
 
-    ❤️ Happy Hacking!\n`)
+    ❤️ Happy Hacking! ❤️\n`)
   }
   try {
     start()
