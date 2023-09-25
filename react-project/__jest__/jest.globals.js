@@ -1,4 +1,4 @@
-// This makes fetch and axios work in the tests
+// This makes fetch work in Jest
 const nodeFetch = require('node-fetch')
 
 globalThis.fetch = nodeFetch
