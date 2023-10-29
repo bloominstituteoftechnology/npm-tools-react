@@ -1,6 +1,14 @@
-// This makes fetch work in Jest
-const nodeFetch = require('node-fetch')
+const { TextEncoder, TextDecoder } = require('node:util')
 
-globalThis.fetch = nodeFetch
-globalThis.Request = nodeFetch.Request
-globalThis.Response = nodeFetch.Response
+Reflect.set(globalThis, 'TextEncoder', TextEncoder)
+Reflect.set(globalThis, 'TextDecoder', TextDecoder)
+
+const { Blob } = require('node:buffer')
+const { fetch, Request, Response, Headers, FormData } = require('undici')
+
+Reflect.set(globalThis, 'fetch', fetch)
+Reflect.set(globalThis, 'Blob', Blob)
+Reflect.set(globalThis, 'Request', Request)
+Reflect.set(globalThis, 'Response', Response)
+Reflect.set(globalThis, 'Headers', Headers)
+Reflect.set(globalThis, 'FormData', FormData)

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+// import axios from 'redaxios'
 import axios from 'axios'
 
 const StyledTodo = styled.li`
@@ -10,9 +11,16 @@ const StyledTodo = styled.li`
 export default function Todo() {
   const [todos, setTodos] = useState([])
 
-  const getAll = () => fetch('http://localhost:9009/api/todos')
-    .then(res => res.json())
-    .then(data => setTodos(data))
+  // const getAll = () => fetch('http://localhost:9009/api/todos')
+  //   .then(res => res.json())
+  //   .then(data => setTodos(data))
+
+  // const toggle = id => fetch(`http://localhost:9009/api/todos/${id}`, { method: 'PATCH' })
+  //   .then(res => res.json())
+  //   .then(data => setTodos(data))
+
+  const getAll = () => axios.get('http://localhost:9009/api/todos')
+    .then(res => setTodos(res.data))
 
   const toggle = id => axios.patch(`http://localhost:9009/api/todos/${id}`)
     .then(res => setTodos(res.data))
