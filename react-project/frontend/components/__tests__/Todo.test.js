@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, waitFor, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import server from '../../../backend/mock-server'
 import { resetTodos } from '../../../backend/helpers'
@@ -9,9 +10,9 @@ server.events.on('request:start', ({ request }) => {
   console.log('MSW intercepted:', request.method, request.url)
 })
 
-// jest.setTimeout(750)
-// const waitForOptions = { timeout: 100 }
-// const queryOptions = { exact: false }
+jest.setTimeout(750)
+const waitForOptions = { timeout: 100 }
+const queryOptions = { exact: false }
 
 const renderApp = ui => {
   window.localStorage.clear()
@@ -29,15 +30,19 @@ afterEach(() => {
   server.resetHandlers()
 })
 
-test('todos are present', async () => {
-  expect(await screen.findByText(/laundry/)).toBeInTheDocument()
-  screen.debug()
-  // expect(await screen.findByText(/laundry/, queryOptions, waitForOptions)).toBeInTheDocument()
-  // expect(await screen.findByText(/dishes/, queryOptions, waitForOptions)).toBeInTheDocument()
-  // expect(await screen.findByText(/groceries/, queryOptions, waitForOptions)).toBeInTheDocument()
-})
+describe('Todo component', () => {
+  console.log(process.env.NODE_ENV)
+  test('todos are present', async () => {
+    await waitFor(() => {
+      expect(screen.getByText(/laundry/, queryOptions)).toBeVisible()
+      expect(screen.getByText(/dishes/, queryOptions)).toBeVisible()
+      expect(screen.getByText(/groceries/, queryOptions)).toBeVisible()
+    }, waitForOptions)
+  })
 
-// test('can do laundry', async () => {
-//   // fireEvent.click(await screen.findByText(/laundry/, queryOptions, waitForOptions))
-//   // expect(await screen.findByText('laundry ✔️', queryOptions, waitForOptions)).toBeInTheDocument()
-// })
+  test('can do laundry', async () => {
+    const user = userEvent.setup()
+    await user.click(await screen.findByText(/laundry/, queryOptions, waitForOptions))
+    expect(await screen.findByText('laundry ✔️', queryOptions, waitForOptions)).toBeVisible()
+  })
+})
