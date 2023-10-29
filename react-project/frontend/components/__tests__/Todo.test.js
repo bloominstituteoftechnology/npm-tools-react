@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, fireEvent, screen } from '@testing-library/react'
+import { render, waitFor, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import server from '../../../backend/mock-server'
 import { resetTodos } from '../../../backend/helpers'
@@ -25,13 +26,19 @@ afterEach(() => {
   server.resetHandlers()
 })
 
-test('todos are present', async () => {
-  expect(await screen.findByText(/laundry/, queryOptions, waitForOptions)).toBeInTheDocument()
-  expect(await screen.findByText(/dishes/, queryOptions, waitForOptions)).toBeInTheDocument()
-  expect(await screen.findByText(/groceries/, queryOptions, waitForOptions)).toBeInTheDocument()
-})
+describe('Todo component', () => {
+  console.log(process.env.NODE_ENV)
+  test('todos are present', async () => {
+    await waitFor(() => {
+      expect(screen.getByText(/laundry/, queryOptions)).toBeVisible()
+      expect(screen.getByText(/dishes/, queryOptions)).toBeVisible()
+      expect(screen.getByText(/groceries/, queryOptions)).toBeVisible()
+    }, waitForOptions)
+  })
 
-test('can do laundry', async () => {
-  fireEvent.click(await screen.findByText(/laundry/, queryOptions, waitForOptions))
-  expect(await screen.findByText('laundry ✔️', queryOptions, waitForOptions)).toBeInTheDocument()
+  test('can do laundry', async () => {
+    const user = userEvent.setup()
+    await user.click(await screen.findByText(/laundry/, queryOptions, waitForOptions))
+    expect(await screen.findByText('laundry ✔️', queryOptions, waitForOptions)).toBeVisible()
+  })
 })
