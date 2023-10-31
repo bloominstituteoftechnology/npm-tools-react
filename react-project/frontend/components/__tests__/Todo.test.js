@@ -31,7 +31,6 @@ afterEach(() => {
 })
 
 describe('Todo component', () => {
-  console.log(process.env.NODE_ENV)
   test('todos are present', async () => {
     await waitFor(() => {
       expect(screen.getByText(/laundry/, queryOptions)).toBeVisible()
