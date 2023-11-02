@@ -10,9 +10,18 @@ const StyledTodo = styled.li`
 export default function Todo() {
   const [todos, setTodos] = useState([])
 
+  // FETCH
   const getAll = () => fetch('http://localhost:9009/api/todos')
     .then(res => res.json())
     .then(data => setTodos(data))
+
+  // const toggle = id => fetch(`http://localhost:9009/api/todos/${id}`, { method: 'PATCH' })
+  //   .then(res => res.json())
+  //   .then(data => setTodos(data))
+
+  // AXIOS
+  // const getAll = () => axios.get('http://localhost:9009/api/todos')
+  //   .then(res => setTodos(res.data))
 
   const toggle = id => axios.patch(`http://localhost:9009/api/todos/${id}`)
     .then(res => setTodos(res.data))
