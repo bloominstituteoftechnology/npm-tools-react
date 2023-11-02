@@ -19,7 +19,7 @@ export default function Todo() {
   //   .then(res => res.json())
   //   .then(data => setTodos(data))
 
-    // AXIOS
+  // AXIOS
   // const getAll = () => axios.get('http://localhost:9009/api/todos')
   //   .then(res => setTodos(res.data))
 
