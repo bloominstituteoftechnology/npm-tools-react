@@ -6,9 +6,10 @@ import server from '../../../backend/mock-server'
 import { resetTodos } from '../../../backend/helpers'
 import Todo from '../Todo'
 
-server.events.on('request:start', ({ request }) => {
-  console.log('MSW intercepted:', request.method, request.url)
-})
+// troubleshooting MSW
+// server.events.on('request:start', ({ request }) => {
+//   console.log('MSW intercepted:', request.method, request.url)
+// })
 
 jest.setTimeout(750)
 const waitForOptions = { timeout: 100 }
