@@ -6,7 +6,7 @@
     "test": "jest --watchAll --verbose",
     "build": "cross-env NODE_ENV=production webpack",
     "frontend": "webpack serve --open",
-    "backend": "nodemon backend/server.js",
+    "backend": "node backend/server.js",
     "start": "npm run backend"
   },
   "devDependencies": {
