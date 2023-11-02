@@ -4,7 +4,7 @@ This is a full-stack React starter app, meant for practicing and prototyping.
 
 ## ✨ Requirements
 
-1. Node >= 16.x
+1. Node >= 18.x
 2. Git Bash (Windows users)
 
 ## ✨ Usage
