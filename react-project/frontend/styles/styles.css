@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Titillium Web';
   src: url('../fonts/TitilliumWeb-SemiBold.ttf');
+  font-display: swap;
 }
 
 body {
