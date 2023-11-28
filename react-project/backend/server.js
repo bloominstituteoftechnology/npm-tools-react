@@ -28,6 +28,15 @@ server.use((req, res) => {
   })
 })
 
+server.use((err, req, res, next) => {
+  const message = err.message || 'Unknown error happened'
+  const status = err.status || 500
+  const reason = err.reason
+  const payload = { message }
+  if (reason) payload.reason = reason
+  res.status(status).json(payload)
+})
+
 server.listen(PORT, () => {
   console.log(`listening on ${PORT}`)
 })
