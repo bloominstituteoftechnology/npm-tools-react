@@ -4,7 +4,7 @@ This tool quickly scaffolds a React project.
 
 ## ✨ Requirements
 
-1. Node >= 20.x
+1. Node >= 18.x
 2. Git Bash (Windows users)
 
 ## ✨ Usage
