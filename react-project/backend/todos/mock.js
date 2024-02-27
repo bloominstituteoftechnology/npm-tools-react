@@ -1,4 +1,4 @@
-const Todo = require('./helpers')
+const Todo = require('./service')
 const { setupServer } = require('msw/node')
 const { http, HttpResponse } = require('msw')
 
@@ -20,11 +20,11 @@ function remove({ params }) {
 }
 
 const handlers = [
-  http.get('http://localhost:9009/api/todos', getAll),
-  http.get('http://localhost:9009/api/todos/:id', getById),
-  http.post('http://localhost:9009/api/todos', create),
-  http.patch('http://localhost:9009/api/todos/:id', toggleDone),
-  http.delete('http://localhost:9009/api/todos/:id', remove),
+  http.get("*/api/todos", getAll),
+  http.post("*/api/todos", create),
+  http.get("*/api/todos/:id", getById),
+  http.patch("*/api/todos/:id", toggleDone),
+  http.delete("*/api/todos/:id", remove),
 ]
 
 module.exports = setupServer(...handlers)

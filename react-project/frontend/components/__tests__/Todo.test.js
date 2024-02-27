@@ -2,8 +2,8 @@ import React from 'react'
 import { render, waitFor, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
-import server from '../../../backend/mock-server'
-import { resetTodos } from '../../../backend/helpers'
+import server from '../../../backend/todos/mock'
+import { resetTodos } from '../../../backend/todos/service'
 import Todo from '../Todo'
 
 jest.setTimeout(750)

@@ -11,19 +11,19 @@ export default function Todo() {
   const [todos, setTodos] = useState([])
 
   // FETCH
-  const getAll = () => fetch('http://localhost:9009/api/todos')
+  const getAll = () => fetch('/api/todos')
     .then(res => res.json())
     .then(data => setTodos(data))
 
-  // const toggle = id => fetch(`http://localhost:9009/api/todos/${id}`, { method: 'PATCH' })
+  // const toggle = id => fetch(`/api/todos/${id}`, { method: 'PATCH' })
   //   .then(res => res.json())
   //   .then(data => setTodos(data))
 
   // AXIOS
-  // const getAll = () => axios.get('http://localhost:9009/api/todos')
+  // const getAll = () => axios.get('/api/todos')
   //   .then(res => setTodos(res.data))
 
-  const toggle = id => axios.patch(`http://localhost:9009/api/todos/${id}`)
+  const toggle = id => axios.patch(`/api/todos/${id}`)
     .then(res => setTodos(res.data))
 
   useEffect(() => { getAll() }, [])

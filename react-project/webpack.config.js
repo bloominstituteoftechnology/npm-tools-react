@@ -50,6 +50,14 @@ const config = {
     compress: true,
     port: FRONTEND_PORT,
     client: { logging: 'none' },
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost:9009',
+        changeOrigin: true,
+        secure: false,
+      },
+    ],
   },
   module: {
     rules: [

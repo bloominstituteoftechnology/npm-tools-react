@@ -1,4 +1,3 @@
-// TODO: this router is not mocked in MSW
 const express = require('express')
 
 const router = express.Router()

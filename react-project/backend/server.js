@@ -1,8 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
-const picsRouter = require('./routers/pics')
-const todosRouter = require('./routers/todos')
+const picsRouter = require('./pics/router')
+const todosRouter = require('./todos/router')
 
 const PORT = process.env.PORT || 9009
 
@@ -16,7 +16,7 @@ server.use(cors())
 
 server.use('/api/todos', todosRouter)
 
-server.use('/api/pics', picsRouter) // TODO: this router is not mocked in MSW
+server.use('/api/pics', picsRouter)
 
 server.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'))

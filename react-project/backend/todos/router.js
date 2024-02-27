@@ -1,5 +1,5 @@
 const express = require('express')
-const Todo = require('../helpers')
+const Todo = require('./service')
 
 const router = express.Router()
 
