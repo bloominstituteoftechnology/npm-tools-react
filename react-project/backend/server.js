@@ -3,6 +3,7 @@ const cors = require('cors')
 const path = require('path')
 const picsRouter = require('./pics/router')
 const todosRouter = require('./todos/router')
+const authTokenRouter = require('./auth/tokenRouter')
 
 const PORT = process.env.PORT || 9009
 
@@ -17,6 +18,8 @@ server.use(cors())
 server.use('/api/todos', todosRouter)
 
 server.use('/api/pics', picsRouter)
+
+server.use('/api/auth/token', authTokenRouter)
 
 server.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'))
