@@ -6,4 +6,6 @@ export default function App() {
       <h2>Hello, World!</h2>
     </div>
   )
-}
+};
+
+let foo = 8;
